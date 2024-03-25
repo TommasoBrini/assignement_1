@@ -1,2 +1,6 @@
-# pcd-2023-2024
-Repository of the course "Concurrent and Distributed Programming a.y. 2023-2024"
+# ASSIGNMENT 01
+First assignment of the course "Concurrent and Distributed Programming a.y. 2023-2024"
+
+## Group members
+- Brini Tommaso
+- Rambaldi Riccardo
