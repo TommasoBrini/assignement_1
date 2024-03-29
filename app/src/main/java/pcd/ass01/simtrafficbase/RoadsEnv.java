@@ -99,12 +99,12 @@ public class RoadsEnv extends AbstractEnvironment {
 	
 	@Override
 	public void doAction(String agentId, Action act) {
-		switch (act) {
-		case MoveForward mv: {
+		if(act instanceof MoveForward) {
+			MoveForward mv = (MoveForward) act;
 			CarAgentInfo info = registeredCars.get(agentId);
 			Road road = info.getRoad();
 			Optional<CarAgentInfo> nearestCar = getNearestCarInFront(road, info.getPos(), CAR_DETECTION_RANGE);
-			
+
 			if (!nearestCar.isEmpty()) {
 				double dist = nearestCar.get().getPos() - info.getPos();
 				if (dist > mv.distance() + MIN_DIST_ALLOWED) {
@@ -117,9 +117,6 @@ public class RoadsEnv extends AbstractEnvironment {
 			if (info.getPos() > road.getLen()) {
 				info.updatePos(0);
 			}
-			break;
-		}
-		default: break;
 		}
 	}
 	
