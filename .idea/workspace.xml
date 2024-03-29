@@ -5,183 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08a0a853-76e5-466c-bf0a-9a9de036519b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/bballs/BallAgent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/bballs/BallViewer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/bballs/BasicAgent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/bballs/BouncingBalls.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/bballs/Boundary.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/bballs/Context.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/bballs/ControlPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/bballs/P2d.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/bballs/V2d.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/bballs/ViewerFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/ex01/SequentialSort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/ex01/SequentialSortInt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/ex01/mysol/ConcurrentSortGeneral.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/ex01/mysol/ConcurrentSortWithTwoThreads.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/ex01/mysol/MyGeneralMergedThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/ex01/mysol/MySortedThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/ex01/mysol/MyTwoMergedThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/ex01/sol/AbstractWorker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/ex01/sol/ConcurrentSortGeneral.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/ex01/sol/ConcurrentSortTwoThreads.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/ex01/sol/MergingWorkerGeneral.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/ex01/sol/MergingWorkerTwoParts.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/ex01/sol/SortingWorker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/hello/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab01/hello/MyThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab02/check_act/BoundedCounter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab02/check_act/OverflowException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab02/check_act/TestCheckAndAct.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab02/check_act/UnderflowException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab02/check_act/WorkerA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab02/check_act/WorkerB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab02/cs_raw/MyWorkerA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab02/cs_raw/MyWorkerB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab02/cs_raw/TestCSWithRawSynchBlocks.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab02/cs_raw/Worker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab02/lost_updates/Cron.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab02/lost_updates/TestLostUpdates.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab02/lost_updates/UnsafeCounter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab02/lost_updates/Worker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/cswithlocks/MyWorkerA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/cswithlocks/MyWorkerB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/cswithlocks/TestCSWithLocks.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/cswithlocks/Worker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/accounts_exercise/Account.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/accounts_exercise/AccountManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/accounts_exercise/BaseAgent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/accounts_exercise/InsufficientBalanceException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/accounts_exercise/RunTransactions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/accounts_exercise/TransferAgent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/deadlock_obs/AgentOne.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/deadlock_obs/AgentTwo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/deadlock_obs/MyObservedEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/deadlock_obs/MyObserver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/deadlock_obs/Observed.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/deadlock_obs/Observer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/deadlock_obs/TestObsPatternDeadlock.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/deadlock_simplest/Resource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/deadlock_simplest/TestDeadlockedResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/deadlock_simplest/ThreadA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab03/liveness/deadlock_simplest/ThreadB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab04/sem/MyWorkerA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab04/sem/MyWorkerB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab04/sem/MyWorkerC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab04/sem/TestCSWithSem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab04/sem/Worker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab04/sem/ex/Pinger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab04/sem/ex/Ponger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab04/sem/ex/TestPingPong.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab04/sem/ex/sol/Pinger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab04/sem/ex/sol/Ponger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab04/sem/ex/sol/TestPingPong.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/chrono/version1_basic/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/chrono/version1_basic/Counter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/chrono/version1_basic/CounterAgent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/chrono/version1_basic/CounterEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/chrono/version1_basic/CounterEventListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/chrono/version1_basic/CounterGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/chrono/version1_basic/Flag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/chrono/version1_basic/TestCounting.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/chrono/version2_strict/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/chrono/version2_strict/Counter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/chrono/version2_strict/CounterAgent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/chrono/version2_strict/CounterGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/chrono/version2_strict/CounterView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/chrono/version2_strict/Flag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/chrono/version2_strict/TestCounting.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/jpf_examples/Counter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/jpf_examples/MyWorkerA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/jpf_examples/MyWorkerB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/jpf_examples/TestCS.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/jpf_examples/Worker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version1_wrong/Complex.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version1_wrong/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version1_wrong/InputListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version1_wrong/MandelbrotPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version1_wrong/MandelbrotSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version1_wrong/MandelbrotView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version1_wrong/MandelbrotViewer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version2_sequential/Complex.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version2_sequential/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version2_sequential/Flag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version2_sequential/InputListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version2_sequential/MandelbrotSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version2_sequential/MandelbrotView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version2_sequential/MandelbrotViewer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version2_sequential/MandlbrotComputingAgent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version3_concurrent/Complex.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version3_concurrent/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version3_concurrent/InputListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version3_concurrent/MandelbrotSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version3_concurrent/MandelbrotView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version3_concurrent/MandelbrotViewer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version3_concurrent/MasterAgent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version3_concurrent/TaskCompletionLatch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version3_concurrent/ViewFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version3_concurrent/WorkerAgent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version4_concurrent_extended/Complex.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version4_concurrent_extended/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version4_concurrent_extended/Flag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version4_concurrent_extended/InputListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version4_concurrent_extended/MandelbrotSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version4_concurrent_extended/MandelbrotView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version4_concurrent_extended/MandelbrotViewer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version4_concurrent_extended/MasterAgent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version4_concurrent_extended/StartSynch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version4_concurrent_extended/Task.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version4_concurrent_extended/TaskBag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version4_concurrent_extended/TaskCompletionLatch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version4_concurrent_extended/ViewFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mandelbrot/version4_concurrent_extended/WorkerAgent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/BoundedBuffer1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/BoundedBuffer2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/Consumer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/Counter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/CounterUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/Getter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/IBoundedBuffer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/Producer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/Setter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/SynchCell.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/SynchCell2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/TestBoundedBuffer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/TestEx.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/TestSemantics1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/TestSemantics2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/TestSemantics3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/TestSynchCell.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/TestWait.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/Worker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/ex_barrier/Barrier.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/ex_barrier/FakeBarrier.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/ex_barrier/TestBarrier.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/ex_barrier/Worker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/ex_latch/FakeLatch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/ex_latch/Latch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/ex_latch/TestLatch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/ex_latch/ThreadA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/monitors/ex_latch/ThreadB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version1_unresponsive/ModelObserver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version1_unresponsive/MyController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version1_unresponsive/MyModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version1_unresponsive/MyView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version1_unresponsive/TestGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version2_deadlock/ModelObserver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version2_deadlock/MyAgent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version2_deadlock/MyController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version2_deadlock/MyModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version2_deadlock/MyView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version2_deadlock/TestGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version3_good/ModelObserver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version3_good/MyAgent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version3_good/MyController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version3_good/MyModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version3_good/MyView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pcd/lab05/mvc/version3_good/TestGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,18 +37,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/tbrin/Desktop/assignement_1",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/tbrin/Desktop/assignement_1&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.ConcurrentSortGeneral">
     <configuration name="ConcurrentSortGeneral" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pcd.lab01.ex01.mysol.ConcurrentSortGeneral" />
