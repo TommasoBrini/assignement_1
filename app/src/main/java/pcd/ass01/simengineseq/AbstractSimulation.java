@@ -63,14 +63,14 @@ public abstract class AbstractSimulation {
 
 		env.init();
 		for (var a: agents) {
-			a.init(env);
+			a.init(env, numSteps);
 		}
 
 		this.notifyReset(t, agents, env);
 		
 		long timePerStep = 0;
 		int nSteps = 0;
-		
+		boolean allDone = true;
 		while (nSteps < numSteps) {
 
 			currentWallTime = System.currentTimeMillis();
@@ -78,8 +78,13 @@ public abstract class AbstractSimulation {
 			/* make a step */
 			
 			env.step(dt);
-			for (var agent: agents) {
-				agent.step(dt);
+
+			if (allDone) {
+				for (var agent : agents) {
+					agent.setdt(dt);
+					agent.start();
+				}
+				allDone = false;
 			}
 			t += dt;
 			

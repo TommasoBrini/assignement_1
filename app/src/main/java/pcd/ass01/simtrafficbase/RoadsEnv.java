@@ -40,14 +40,14 @@ public class RoadsEnv extends AbstractEnvironment {
 	}
 	
 	@Override
-	public void step(int dt) {
+	public synchronized void step(int dt) {
 		for (var tl: trafficLights) {
 			tl.step(dt);
 		}
 	}
 	
 	public void registerNewCar(CarAgent car, Road road, double pos) {
-		registeredCars.put(car.getId(), new CarAgentInfo(car, road, pos));
+		registeredCars.put(car.getAgentId(), new CarAgentInfo(car, road, pos));
 	}
 
 	public Road createRoad(P2d p0, P2d p1) {
@@ -98,7 +98,7 @@ public class RoadsEnv extends AbstractEnvironment {
 	
 	
 	@Override
-	public void doAction(String agentId, Action act) {
+	public synchronized void doAction(String agentId, Action act) {
 		if(act instanceof MoveForward) {
 			MoveForward mv = (MoveForward) act;
 			CarAgentInfo info = registeredCars.get(agentId);
