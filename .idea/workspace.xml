@@ -74,7 +74,11 @@
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
+<<<<<<< HEAD
 }]]></component>
+=======
+}</component>
+>>>>>>> main
   <component name="RunManager">
     <configuration name="ConcurrentSortGeneral" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pcd.lab01.ex01.mysol.ConcurrentSortGeneral" />
