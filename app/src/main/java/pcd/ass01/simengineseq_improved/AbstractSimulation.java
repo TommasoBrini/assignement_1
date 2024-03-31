@@ -1,5 +1,8 @@
 package pcd.ass01.simengineseq_improved;
 
+import pcd.prova.Barrier;
+import pcd.prova.BarrierImpl;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +73,12 @@ public abstract class AbstractSimulation {
 		
 		long timePerStep = 0;
 		int nSteps = 0;
-		
+
+		int nWorkers = Runtime.getRuntime().availableProcessors();
+
+		int jobSize = agents.size()/nWorkers;
+		Barrier stepBarrier = new BarrierImpl(nWorkers);
+
 		while (nSteps < numSteps) {
 
 			currentWallTime = System.currentTimeMillis();
@@ -84,12 +92,33 @@ public abstract class AbstractSimulation {
 			env.cleanActions();
 			
 			/* ask each agent to make a step */
-			
-			for (var agent: agents) {
-				agent.step(dt);
+			//CONCURRENT
+			List<SimulationWorker> workers = new ArrayList<>();
+			System.out.println("Step " + (nSteps + 1) + " started");
+			for (int i = 0; i < nWorkers; i++) {
+				int startIndex = i * jobSize;
+				int endIndex = Math.min((i + 1) * jobSize, agents.size());
+				var simulation = new SimulationWorker("worker-" + (i + 1), agents.subList(startIndex, endIndex), dt, stepBarrier);
+				workers.add(simulation);
+				simulation.start();
 			}
 			t += dt;
-						
+
+			try {
+				stepBarrier.hitAndWaitAll();
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			}
+
+			for (SimulationWorker worker : workers) {
+				worker.interrupt();
+				try {
+					worker.join(); // Wait for the thread to terminate
+				} catch (InterruptedException e) {
+					throw new RuntimeException(e);
+				}
+			}
+
 			/* process actions submitted to the environment */
 			
 			env.processActions();
