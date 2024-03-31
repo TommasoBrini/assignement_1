@@ -74,9 +74,9 @@ public abstract class AbstractSimulation {
 		long timePerStep = 0;
 		int nSteps = 0;
 
-		int nWorkers = Runtime.getRuntime().availableProcessors();
+		int nWorkers = Math.min(Runtime.getRuntime().availableProcessors(), agents.size());
 
-		int jobSize = agents.size()/nWorkers;
+		int jobSize = (int) Math.ceil((double) agents.size() / nWorkers);
 		Barrier stepBarrier = new BarrierImpl(nWorkers);
 
 		while (nSteps < numSteps) {
@@ -94,15 +94,17 @@ public abstract class AbstractSimulation {
 			/* ask each agent to make a step */
 			//CONCURRENT
 			List<SimulationWorker> workers = new ArrayList<>();
-			System.out.println("Step " + (nSteps + 1) + " started");
 			for (int i = 0; i < nWorkers; i++) {
 				int startIndex = i * jobSize;
 				int endIndex = Math.min((i + 1) * jobSize, agents.size());
+				if(startIndex >= agents.size()) {
+					break;
+				}
 				var simulation = new SimulationWorker("worker-" + (i + 1), agents.subList(startIndex, endIndex), dt, stepBarrier);
 				workers.add(simulation);
 				simulation.start();
+
 			}
-			t += dt;
 
 			try {
 				stepBarrier.hitAndWaitAll();
@@ -111,7 +113,6 @@ public abstract class AbstractSimulation {
 			}
 
 			for (SimulationWorker worker : workers) {
-				worker.interrupt();
 				try {
 					worker.join(); // Wait for the thread to terminate
 				} catch (InterruptedException e) {
@@ -119,6 +120,7 @@ public abstract class AbstractSimulation {
 				}
 			}
 
+			t += dt;
 			/* process actions submitted to the environment */
 			
 			env.processActions();

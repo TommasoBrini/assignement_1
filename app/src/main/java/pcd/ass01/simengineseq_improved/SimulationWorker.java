@@ -21,12 +21,9 @@ public class SimulationWorker extends Thread {
 
     public void run() {
         try{
-            System.out.println("Worker " + name + " started");
             for (var agent: agents) {
                 agent.step(dt);
             }
-
-            System.out.println("Worker " + name + " completed");
             barrier.hitAndWaitAll();
         } catch (InterruptedException ex) {
             System.out.println("Interrupted!");
