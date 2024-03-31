@@ -35,6 +35,7 @@ public abstract class AbstractSimulation {
 	private long averageTimePerStep;
 
 
+
 	protected AbstractSimulation() {
 		agents = new ArrayList<AbstractAgent>();
 		listeners = new ArrayList<SimulationListener>();
@@ -76,9 +77,20 @@ public abstract class AbstractSimulation {
 			currentWallTime = System.currentTimeMillis();
 		
 			/* make a step */
-			
-			env.step(dt);
+			Thread envThread = new Thread(){
+				public void run() {
+					env.step(dt);
+				}
+			};
+			envThread.start();
 
+			for(var agent : agents) {
+				Thread agentThread = new Thread(){
+					public void run() {
+						agent.run();
+					}
+				};
+			}
 			if (allDone) {
 				for (var agent : agents) {
 					agent.setdt(dt);
