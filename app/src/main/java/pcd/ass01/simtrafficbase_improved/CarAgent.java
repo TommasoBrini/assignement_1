@@ -44,7 +44,7 @@ public abstract class CarAgent extends AbstractAgent {
 		/* sense */
 
 		AbstractEnvironment env = this.getEnv();		
-		currentPercept = (CarPercept) env.getCurrentPercepts(getId());			
+		currentPercept = (CarPercept) env.getCurrentPercepts(getAgentId());
 
 		/* decide */
 		
@@ -72,7 +72,7 @@ public abstract class CarAgent extends AbstractAgent {
 	}
 	
 	protected void log(String msg) {
-		System.out.println("[CAR " + this.getId() + "] " + msg);
+		System.out.println("[CAR " + this.getAgentId() + "] " + msg);
 	}
 
 	

@@ -5,7 +5,7 @@ package pcd.ass01.simengineseq_improved;
  * Base  class for defining types of agents taking part to the simulation
  * 
  */
-public abstract class AbstractAgent {
+public abstract class AbstractAgent extends Thread {
 	
 	private String myId;
 	private AbstractEnvironment env;
@@ -34,9 +34,10 @@ public abstract class AbstractAgent {
 	 * @param dt - logical time step
 	 */
 	abstract public void step(int dt);
-	
 
-	public String getId() {
+
+
+	public String getAgentId() {
 		return myId;
 	}
 	

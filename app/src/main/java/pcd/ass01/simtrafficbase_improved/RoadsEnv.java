@@ -45,7 +45,7 @@ public class RoadsEnv extends AbstractEnvironment {
 	}
 	
 	public void registerNewCar(CarAgent car, Road road, double pos) {
-		registeredCars.put(car.getId(), new CarAgentInfo(car, road, pos));
+		registeredCars.put(car.getAgentId(), new CarAgentInfo(car, road, pos));
 	}
 
 	public Road createRoad(P2d p0, P2d p1) {
@@ -98,8 +98,8 @@ public class RoadsEnv extends AbstractEnvironment {
 	@Override
 	public void processActions() {
 		for (var act: submittedActions) {
-			switch (act) {
-			case MoveForward mv: {
+			if(act instanceof MoveForward){
+				MoveForward mv = (MoveForward) act;
 				CarAgentInfo info = registeredCars.get(mv.agentId());
 				Road road = info.getRoad();
 				Optional<CarAgentInfo> nearestCar = getNearestCarInFront(road, info.getPos(), CAR_DETECTION_RANGE);
@@ -116,9 +116,6 @@ public class RoadsEnv extends AbstractEnvironment {
 				if (info.getPos() > road.getLen()) {
 					info.updatePos(0);
 				}
-				break;
-			}
-			default: break;
 			}
 		}
 	}
