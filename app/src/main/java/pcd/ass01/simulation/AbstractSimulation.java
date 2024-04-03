@@ -2,7 +2,6 @@ package pcd.ass01.simulation;
 
 import pcd.ass01.agent.AbstractAgent;
 import pcd.ass01.environment.AbstractEnvironment;
-import pcd.prova.*;
 
 import java.util.ArrayList;
 import java.util.List;
