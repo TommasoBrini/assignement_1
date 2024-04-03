@@ -3,7 +3,7 @@ package pcd.ass01.simulation;
 import pcd.ass01.agent.AbstractAgent;
 
 import java.util.List;
-import java.util.concurrent.CyclicBarrier;
+import pcd.ass01.monitor.CyclicBarrier;
 
 public class SimulationWorker extends Thread {
 

@@ -5,7 +5,7 @@ import pcd.ass01.environment.AbstractEnvironment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CyclicBarrier;
+import pcd.ass01.monitor.CyclicBarrier;
 
 /**
  * Base class for defining concrete simulations
