@@ -135,7 +135,6 @@ public abstract class AbstractSimulation {
 		}
 
 		if(step != nSteps){
-			System.out.println("Stampa env step");
 			env.step(dt);
 			env.cleanActions();
 		}
