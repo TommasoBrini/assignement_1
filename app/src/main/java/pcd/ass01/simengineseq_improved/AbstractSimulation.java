@@ -1,10 +1,11 @@
 package pcd.ass01.simengineseq_improved;
 
-import pcd.prova.Barrier;
-import pcd.prova.BarrierImpl;
+import pcd.prova.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CyclicBarrier;
 
 /**
  * Base class for defining concrete simulations
@@ -36,6 +37,9 @@ public abstract class AbstractSimulation {
 	private long startWallTime;
 	private long endWallTime;
 	private long averageTimePerStep;
+	int t;
+	long timePerStep;
+	int nSteps;
 
 
 	protected AbstractSimulation() {
@@ -57,12 +61,12 @@ public abstract class AbstractSimulation {
 	 * 
 	 * @param numSteps
 	 */
-	public void run(int numSteps) {		
-
+	public void run(int numSteps) {
+		nSteps = numSteps;
 		startWallTime = System.currentTimeMillis();
 
 		/* initialize the env and the agents inside */
-		int t = t0;
+		t = t0;
 
 		env.init();
 		for (var a: agents) {
@@ -71,73 +75,71 @@ public abstract class AbstractSimulation {
 
 		this.notifyReset(t, agents, env);
 		
-		long timePerStep = 0;
-		int nSteps = 0;
+		timePerStep = 0;
 
 		int nWorkers = Math.min(Runtime.getRuntime().availableProcessors(), agents.size());
 
 		int jobSize = (int) Math.ceil((double) agents.size() / nWorkers);
-		Barrier stepBarrier = new BarrierImpl(nWorkers);
 
-		while (nSteps < numSteps) {
-
-			currentWallTime = System.currentTimeMillis();
-		
-			/* make a step */
-			
-			env.step(dt);
-			
-			/* clean the submitted actions */
-			
-			env.cleanActions();
-			
-			/* ask each agent to make a step */
-			//CONCURRENT
-			List<SimulationWorker> workers = new ArrayList<>();
-			for (int i = 0; i < nWorkers; i++) {
-				int startIndex = i * jobSize;
-				int endIndex = Math.min((i + 1) * jobSize, agents.size());
-				if(startIndex >= agents.size()) {
-					break;
-				}
-				var simulation = new SimulationWorker("worker-" + (i + 1), agents.subList(startIndex, endIndex), dt, stepBarrier);
-				workers.add(simulation);
-				simulation.start();
-
+		Runnable envRunnable = new Runnable() {
+			int step = 0;
+			@Override
+			public void run() {
+				step++;
+				test(step);
 			}
+		};
 
+		//TO DO
+		CyclicBarrier barrier = new CyclicBarrier(nWorkers, envRunnable);
+
+		env.step(dt);
+
+		List<SimulationWorker> workers = new ArrayList<>();
+		for (int i = 0; i < nWorkers; i++) {
+			int startIndex = i * jobSize;
+			int endIndex = Math.min((i + 1) * jobSize, agents.size());
+			if(startIndex >= agents.size()) {
+				break;
+			}
+			var simulation = new SimulationWorker("worker-" + (i + 1), agents.subList(startIndex, endIndex), dt, numSteps, barrier);
+			workers.add(simulation);
+			simulation.start();
+		}
+
+		for (var simulation : workers) {
 			try {
-				stepBarrier.hitAndWaitAll();
+				simulation.join();
 			} catch (InterruptedException e) {
-				throw new RuntimeException(e);
+				e.printStackTrace();
 			}
-
-			for (SimulationWorker worker : workers) {
-				try {
-					worker.join(); // Wait for the thread to terminate
-				} catch (InterruptedException e) {
-					throw new RuntimeException(e);
-				}
-			}
-
-			t += dt;
-			/* process actions submitted to the environment */
-			
-			env.processActions();
-			
-			notifyNewStep(t, agents, env);
-
-			nSteps++;			
-			timePerStep += System.currentTimeMillis() - currentWallTime;
-			
-			if (toBeInSyncWithWallTime) {
-				syncWithWallTime();
-			}
-		}	
-		
+		}
 		endWallTime = System.currentTimeMillis();
 		this.averageTimePerStep = timePerStep / numSteps;
 		
+	}
+
+	protected void test(int step){
+		currentWallTime = System.currentTimeMillis();
+		t += dt;
+		/* process actions submitted to the environment */
+
+		env.processActions();
+
+		notifyNewStep(t, agents, env);
+
+		timePerStep += System.currentTimeMillis() - currentWallTime;
+
+		if (toBeInSyncWithWallTime) {
+			syncWithWallTime();
+		}
+
+		if(step != nSteps){
+			System.out.println("Stampa env step");
+			env.step(dt);
+			env.cleanActions();
+		}
+
 	}
 	
 	public long getSimulationDuration() {

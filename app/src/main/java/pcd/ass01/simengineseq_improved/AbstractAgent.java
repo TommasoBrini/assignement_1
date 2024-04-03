@@ -5,11 +5,12 @@ package pcd.ass01.simengineseq_improved;
  * Base  class for defining types of agents taking part to the simulation
  * 
  */
-public abstract class AbstractAgent extends Thread {
+public abstract class AbstractAgent {
 	
 	private String myId;
 	private AbstractEnvironment env;
-	
+	private int dt;
+
 	/**
 	 * Each agent has an identifier
 	 * 
@@ -35,7 +36,9 @@ public abstract class AbstractAgent extends Thread {
 	 */
 	abstract public void step(int dt);
 
-
+	public void setDt(int dt) {
+		this.dt = dt;
+	}
 
 	public String getAgentId() {
 		return myId;

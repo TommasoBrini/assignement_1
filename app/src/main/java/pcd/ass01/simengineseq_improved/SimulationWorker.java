@@ -1,32 +1,34 @@
 package pcd.ass01.simengineseq_improved;
 
-import pcd.prova.Barrier;
-
 import java.util.List;
+import java.util.concurrent.CyclicBarrier;
 
 public class SimulationWorker extends Thread {
 
     private String name;
     private List<AbstractAgent> agents;
     private int dt;
+    private int step;
+    private CyclicBarrier barrier;
 
-    private Barrier barrier;
-
-    public SimulationWorker(String name, List<AbstractAgent> agents, int dt, Barrier stepBarrier) {
+    public SimulationWorker(String name, List<AbstractAgent> agents, int dt, int step, CyclicBarrier stepBarrier) {
         this.name = name;
         this.agents = agents;
         this.dt = dt;
+        this.step = step;
         this.barrier = stepBarrier;
     }
 
     public void run() {
-        try{
-            for (var agent: agents) {
+        for (int i = 0; i < step; i++) {
+            for (var agent : agents) {
                 agent.step(dt);
             }
-            barrier.hitAndWaitAll();
-        } catch (InterruptedException ex) {
-            System.out.println("Interrupted!");
+            try {
+                barrier.await();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

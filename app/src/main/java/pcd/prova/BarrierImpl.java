@@ -1,5 +1,7 @@
 package pcd.prova;
 
+import java.util.concurrent.locks.Condition;
+
 public class BarrierImpl implements Barrier{
     private int nparticipants;
     private int countWorkers = 0;
@@ -21,4 +23,11 @@ public class BarrierImpl implements Barrier{
             }
         }
     }
+
+    @Override
+    public synchronized void reset() {
+        countWorkers = 0;
+        canPass = false;
+    }
+
 }
