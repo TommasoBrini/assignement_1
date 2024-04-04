@@ -77,6 +77,8 @@ public abstract class AbstractSimulation {
 		/* initialize the env and the agents inside */
 		t = t0;
 
+		init();
+
 		timePerStep = 0;
 
 		int nWorkers = Math.min(Runtime.getRuntime().availableProcessors(), agents.size());
@@ -122,7 +124,13 @@ public abstract class AbstractSimulation {
 
 	public void pause() {
 		for (var simulation : workers) {
-			simulation.stopSimulation();
+			simulation.pauseSimulation();
+		}
+	}
+
+	public void resume() {
+		for (var simulation : workers) {
+			simulation.resumeSimulation();
 		}
 	}
 

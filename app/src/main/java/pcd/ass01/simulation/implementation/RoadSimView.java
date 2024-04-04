@@ -112,10 +112,18 @@ public class RoadSimView extends JFrame implements SimulationListener, ActionLis
 		} else if (e.getSource() == this.stop) {
 			System.out.println("Stop");
 		} else if (e.getSource() == this.pause) {
-			this.pause.setText("Resume");
-			this.stop.setEnabled(false);
 			this.start.setEnabled(false);
-			simulationThread.pauseSimulation();
+			if(this.pause.getText().equals("Resume")){
+				System.out.println("Suca");
+				this.pause.setText("Pause");
+				simulationThread.resumeSimulation();
+				this.stop.setEnabled(true);
+			} else {
+				System.out.println("Coglione");
+				this.pause.setText("Resume");
+				simulationThread.pauseSimulation();
+				this.stop.setEnabled(false);
+			}
 		}
 	}
 

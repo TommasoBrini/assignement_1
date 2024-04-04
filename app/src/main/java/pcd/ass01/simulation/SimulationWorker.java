@@ -29,7 +29,7 @@ public class SimulationWorker extends Thread {
             if(!state.get()) {
                 synchronized (this){
                     try {
-                        wait();
+                        this.wait();
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
@@ -49,7 +49,12 @@ public class SimulationWorker extends Thread {
 
     }
 
-    public void stopSimulation() {
+    public void pauseSimulation() {
         state.set(false);
+    }
+
+    public synchronized void resumeSimulation() {
+        state.set(true);
+        this.notifyAll();
     }
 }

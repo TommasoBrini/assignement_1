@@ -18,8 +18,8 @@ public class SimulationThread extends Thread {
             simulation.run(step);
         }
 
-        public void stopSimulation() {
-            //simulation.stop();
+        public void resumeSimulation() {
+            simulation.resume();
         }
 
         public void pauseSimulation() {
