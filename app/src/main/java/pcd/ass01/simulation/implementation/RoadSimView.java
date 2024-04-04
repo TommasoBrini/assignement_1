@@ -17,25 +17,56 @@ import pcd.ass01.util.V2d;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class RoadSimView extends JFrame implements SimulationListener {
 
 	private RoadSimViewPanel panel;
 	private static final int CAR_DRAW_SIZE = 10;
 	
-	public RoadSimView() {
+	public RoadSimView(String name) {
 		super("RoadSim View");
-		setSize(1500,600);
+		setSize(1500,750);
 			
-		panel = new RoadSimViewPanel(1500,600); 
+		panel = new RoadSimViewPanel(1500,600);
 		panel.setSize(1500, 600);
 
 		JPanel cp = new JPanel();
 		LayoutManager layout = new BorderLayout();
 		cp.setLayout(layout);
+
+
+		JPanel buttons = new JPanel();
+		LayoutManager layout2 = new GridLayout(2,1);
+		buttons.setLayout(layout2);
+		JLabel simName = new JLabel(name);
+		simName.setHorizontalAlignment(SwingConstants.CENTER);
+		Font font = simName.getFont();
+		simName.setFont(new Font(font.getName(), Font.BOLD, 15)); // Cambia la dimensione del font a 20
+
+		JButton start = new JButton("Start");
+		JButton stop = new JButton("Stop");
+		JButton pause = new JButton("Pause");
+
+		Dimension buttonSize = new Dimension(100, 50);
+		// Imposta le dimensioni dei pulsanti
+		start.setPreferredSize(buttonSize);
+		stop.setPreferredSize(buttonSize);
+		pause.setPreferredSize(buttonSize);
+
+		buttons.add(simName);
+
+		JPanel buttonPanel = new JPanel(new GridLayout(1,3));
+		buttonPanel.add(start, BorderLayout.NORTH);
+		buttonPanel.add(stop, BorderLayout.NORTH);
+		buttonPanel.add(pause, BorderLayout.NORTH);
+
+		buttons.add(buttonPanel);
+
+		cp.add(buttons, BorderLayout.NORTH);
 		cp.add(BorderLayout.CENTER,panel);
-		setContentPane(cp);		
-		
+		setContentPane(cp);
+
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 			
 	}
@@ -49,7 +80,8 @@ public class RoadSimView extends JFrame implements SimulationListener {
 	@Override
 	public void notifyInit(int t, List<AbstractAgent> agents, AbstractEnvironment env) {
 		// TODO Auto-generated method stub
-		
+		var e = ((RoadsEnv) env);
+		panel.update(e.getRoads(), e.getAgentInfo(), e.getTrafficLights());
 	}
 
 	@Override

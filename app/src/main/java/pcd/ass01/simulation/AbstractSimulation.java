@@ -54,7 +54,15 @@ public abstract class AbstractSimulation {
 	 * 
 	 */
 	protected abstract void setup();
-	
+
+	public void init() {
+		env.init();
+		for (var a: agents) {
+			a.init(env);
+		}
+		this.notifyReset(t, agents, env);
+	}
+
 	/**
 	 * Method running the simulation for a number of steps,
 	 * using a sequential approach
@@ -68,12 +76,7 @@ public abstract class AbstractSimulation {
 		/* initialize the env and the agents inside */
 		t = t0;
 
-		env.init();
-		for (var a: agents) {
-			a.init(env);
-		}
-
-		this.notifyReset(t, agents, env);
+		this.init();
 		
 		timePerStep = 0;
 
