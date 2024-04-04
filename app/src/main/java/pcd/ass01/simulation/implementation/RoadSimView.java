@@ -14,14 +14,12 @@ import pcd.ass01.environment.AbstractEnvironment;
 import pcd.ass01.environment.implementation.Road;
 import pcd.ass01.environment.implementation.RoadsEnv;
 import pcd.ass01.environment.implementation.TrafficLight;
-import pcd.ass01.simulation.AbstractSimulation;
 import pcd.ass01.simulation.SimulationListener;
 import pcd.ass01.simulation.SimulationThread;
 import pcd.ass01.util.V2d;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.Border;
 
 public class RoadSimView extends JFrame implements SimulationListener, ActionListener {
 
@@ -58,6 +56,9 @@ public class RoadSimView extends JFrame implements SimulationListener, ActionLis
 		start.addActionListener(this);
 		stop.addActionListener(this);
 		pause.addActionListener(this);
+
+		pause.setEnabled(false);
+		stop.setEnabled(false);
 
 		Dimension buttonSize = new Dimension(100, 50);
 		// Imposta le dimensioni dei pulsanti
@@ -110,16 +111,20 @@ public class RoadSimView extends JFrame implements SimulationListener, ActionLis
 			simulationThread.setStep(1000);
 			simulationThread.start();
 		} else if (e.getSource() == this.stop) {
-			System.out.println("Stop");
+			this.simulationThread.stopSimulation();
+			this.start.setEnabled(true);
+			this.stop.setEnabled(false);
+			this.pause.setEnabled(false);
+			JOptionPane.showMessageDialog(this, "Simulation close");
+			System.exit(0);
+
 		} else if (e.getSource() == this.pause) {
 			this.start.setEnabled(false);
 			if(this.pause.getText().equals("Resume")){
-				System.out.println("Suca");
 				this.pause.setText("Pause");
 				simulationThread.resumeSimulation();
 				this.stop.setEnabled(true);
 			} else {
-				System.out.println("Coglione");
 				this.pause.setText("Resume");
 				simulationThread.pauseSimulation();
 				this.stop.setEnabled(false);

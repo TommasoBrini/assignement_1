@@ -131,6 +131,19 @@ public abstract class AbstractSimulation {
 	public void resume() {
 		for (var simulation : workers) {
 			simulation.resumeSimulation();
+			synchronized (simulation){
+				simulation.notify();
+				simulation.notify();
+			}
+		}
+
+	}
+
+	public void stop() {
+		for (var simulation : workers) {
+			synchronized (simulation){
+				simulation.interrupt();
+			}
 		}
 	}
 

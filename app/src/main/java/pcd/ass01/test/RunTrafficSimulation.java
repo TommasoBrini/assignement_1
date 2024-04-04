@@ -3,8 +3,6 @@ package pcd.ass01.test;
 import pcd.ass01.simulation.SimulationThread;
 import pcd.ass01.simulation.implementation.*;
 
-import java.util.ArrayList;
-
 /**
  * 
  * Main class to create and run a simulation

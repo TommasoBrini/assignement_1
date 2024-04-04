@@ -25,4 +25,8 @@ public class SimulationThread extends Thread {
         public void pauseSimulation() {
             simulation.pause();
         }
+
+        public void stopSimulation() {
+            simulation.stop();
+        }
 }
