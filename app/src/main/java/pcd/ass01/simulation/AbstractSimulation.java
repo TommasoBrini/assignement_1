@@ -40,6 +40,7 @@ public abstract class AbstractSimulation {
 	int t;
 	long timePerStep;
 	int nSteps;
+	private List<SimulationWorker> workers = new ArrayList<>();
 
 
 	protected AbstractSimulation() {
@@ -76,8 +77,6 @@ public abstract class AbstractSimulation {
 		/* initialize the env and the agents inside */
 		t = t0;
 
-		this.init();
-		
 		timePerStep = 0;
 
 		int nWorkers = Math.min(Runtime.getRuntime().availableProcessors(), agents.size());
@@ -98,7 +97,6 @@ public abstract class AbstractSimulation {
 
 		env.step(dt);
 
-		List<SimulationWorker> workers = new ArrayList<>();
 		for (int i = 0; i < nWorkers; i++) {
 			int startIndex = i * jobSize;
 			int endIndex = Math.min((i + 1) * jobSize, agents.size());
@@ -120,6 +118,12 @@ public abstract class AbstractSimulation {
 		endWallTime = System.currentTimeMillis();
 		this.averageTimePerStep = timePerStep / numSteps;
 		
+	}
+
+	public void pause() {
+		for (var simulation : workers) {
+			simulation.stopSimulation();
+		}
 	}
 
 	protected void test(int step){

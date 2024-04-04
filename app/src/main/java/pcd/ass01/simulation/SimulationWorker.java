@@ -3,6 +3,8 @@ package pcd.ass01.simulation;
 import pcd.ass01.agent.AbstractAgent;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import pcd.ass01.monitor.CyclicBarrier;
 
 public class SimulationWorker extends Thread {
@@ -12,6 +14,7 @@ public class SimulationWorker extends Thread {
     private int dt;
     private int step;
     private CyclicBarrier barrier;
+    public AtomicBoolean state = new AtomicBoolean(true);
 
     public SimulationWorker(String name, List<AbstractAgent> agents, int dt, int step, CyclicBarrier stepBarrier) {
         this.name = name;
@@ -23,14 +26,30 @@ public class SimulationWorker extends Thread {
 
     public void run() {
         for (int i = 0; i < step; i++) {
-            for (var agent : agents) {
-                agent.step(dt);
+            if(!state.get()) {
+                synchronized (this){
+                    try {
+                        wait();
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            } else {
+                for (var agent : agents) {
+                    agent.step(dt);
+                }
+                try {
+                    barrier.await();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-            try {
-                barrier.await();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+
         }
+
+    }
+
+    public void stopSimulation() {
+        state.set(false);
     }
 }

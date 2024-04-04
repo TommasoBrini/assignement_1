@@ -2,6 +2,8 @@ package pcd.ass01.simulation.implementation;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,20 +14,29 @@ import pcd.ass01.environment.AbstractEnvironment;
 import pcd.ass01.environment.implementation.Road;
 import pcd.ass01.environment.implementation.RoadsEnv;
 import pcd.ass01.environment.implementation.TrafficLight;
+import pcd.ass01.simulation.AbstractSimulation;
 import pcd.ass01.simulation.SimulationListener;
+import pcd.ass01.simulation.SimulationThread;
 import pcd.ass01.util.V2d;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-public class RoadSimView extends JFrame implements SimulationListener {
+public class RoadSimView extends JFrame implements SimulationListener, ActionListener {
 
 	private RoadSimViewPanel panel;
 	private static final int CAR_DRAW_SIZE = 10;
+	private final JButton start = new JButton("Start");
+	private final JButton stop = new JButton("Stop");
+	private final JButton pause = new JButton("Pause");
+	private SimulationThread simulationThread;
 	
-	public RoadSimView(String name) {
+	public RoadSimView(SimulationThread thread, String name) {
 		super("RoadSim View");
+
+		simulationThread = thread;
+
 		setSize(1500,750);
 			
 		panel = new RoadSimViewPanel(1500,600);
@@ -44,9 +55,9 @@ public class RoadSimView extends JFrame implements SimulationListener {
 		Font font = simName.getFont();
 		simName.setFont(new Font(font.getName(), Font.BOLD, 15)); // Cambia la dimensione del font a 20
 
-		JButton start = new JButton("Start");
-		JButton stop = new JButton("Stop");
-		JButton pause = new JButton("Pause");
+		start.addActionListener(this);
+		stop.addActionListener(this);
+		pause.addActionListener(this);
 
 		Dimension buttonSize = new Dimension(100, 50);
 		// Imposta le dimensioni dei pulsanti
@@ -89,8 +100,26 @@ public class RoadSimView extends JFrame implements SimulationListener {
 		var e = ((RoadsEnv) env);
 		panel.update(e.getRoads(), e.getAgentInfo(), e.getTrafficLights());
 	}
-	
-	
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == this.start){
+			this.start.setEnabled(false);
+			this.stop.setEnabled(true);
+			this.pause.setEnabled(true);
+			simulationThread.setStep(1000);
+			simulationThread.start();
+		} else if (e.getSource() == this.stop) {
+			System.out.println("Stop");
+		} else if (e.getSource() == this.pause) {
+			this.pause.setText("Resume");
+			this.stop.setEnabled(false);
+			this.start.setEnabled(false);
+			simulationThread.pauseSimulation();
+		}
+	}
+
+
 	class RoadSimViewPanel extends JPanel {
 		
 		List<CarAgentInfo> cars;

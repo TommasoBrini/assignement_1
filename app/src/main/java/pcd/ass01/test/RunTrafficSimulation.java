@@ -1,5 +1,6 @@
 package pcd.ass01.test;
 
+import pcd.ass01.simulation.SimulationThread;
 import pcd.ass01.simulation.implementation.*;
 
 import java.util.ArrayList;
@@ -18,15 +19,14 @@ public class RunTrafficSimulation {
 		var simulation = new TrafficSimulationWithCrossRoads();
 		simulation.setup();
 
-		String sim = simulation.getClass().getName();
-		String[] as = sim.split("\\.");
-		sim = as[as.length - 1];
-
+		SimulationThread simulationThread = new SimulationThread(simulation);
+		String name = simulation.getClass().getName();
+		String[] as = name.split("\\.");
+		name = as[as.length - 1];
 
 		RoadSimStatistics stat = new RoadSimStatistics();
-		RoadSimView view = new RoadSimView(sim);
+		RoadSimView view = new RoadSimView(simulationThread, name);
 		view.display();
-		
 		simulation.addSimulationListener(stat);
 		simulation.addSimulationListener(view);		
 		simulation.init();
