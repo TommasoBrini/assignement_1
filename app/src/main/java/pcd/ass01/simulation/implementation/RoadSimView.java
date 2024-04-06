@@ -82,6 +82,8 @@ public class RoadSimView extends JFrame implements SimulationListener, ActionLis
 		stop.setPreferredSize(buttonSize);
 		pause.setPreferredSize(buttonSize);
 
+		start.setBackground(Color.green);
+
 		slider.setPreferredSize(new Dimension(1000, 50));
 
 		buttons.add(simName);
@@ -129,6 +131,8 @@ public class RoadSimView extends JFrame implements SimulationListener, ActionLis
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.start){
+			this.start.setBackground(Color.white);
+			this.stop.setBackground(Color.red);
 			this.start.setEnabled(false);
 			this.stop.setEnabled(true);
 			this.pause.setEnabled(true);
@@ -136,21 +140,21 @@ public class RoadSimView extends JFrame implements SimulationListener, ActionLis
 			simulationThread.start();
 		} else if (e.getSource() == this.stop) {
 			this.simulationThread.stopSimulation();
-			this.start.setEnabled(true);
 			this.stop.setEnabled(false);
 			this.pause.setEnabled(false);
-			JOptionPane.showMessageDialog(this, "Simulation close");
+			JOptionPane.showMessageDialog(this, "Simulation closed");
 			System.exit(0);
-
 		} else if (e.getSource() == this.pause) {
-			this.start.setEnabled(false);
+			this.start.setBackground(Color.white);
 			if(this.pause.getText().equals("Resume")){
 				this.pause.setText("Pause");
 				simulationThread.resumeSimulation();
+				this.stop.setBackground(Color.red);
 				this.stop.setEnabled(true);
 			} else {
 				this.pause.setText("Resume");
 				simulationThread.pauseSimulation();
+				this.stop.setBackground(Color.white);
 				this.stop.setEnabled(false);
 			}
 		}
