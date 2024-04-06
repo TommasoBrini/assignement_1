@@ -7,6 +7,10 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import org.checkerframework.checker.formatter.qual.Format;
 
 import pcd.ass01.agent.AbstractAgent;
 import pcd.ass01.agent.implementation.CarAgentInfo;
@@ -28,6 +32,8 @@ public class RoadSimView extends JFrame implements SimulationListener, ActionLis
 	private final JButton start = new JButton("Start");
 	private final JButton stop = new JButton("Stop");
 	private final JButton pause = new JButton("Pause");
+	private final JSlider slider = new JSlider(100, 100000);
+	private final JLabel stepNumLabel = new JLabel("Number of step to execute:  %,d".formatted(slider.getValue()));
 	private SimulationThread simulationThread;
 	
 	public RoadSimView(SimulationThread thread, String name) {
@@ -35,7 +41,7 @@ public class RoadSimView extends JFrame implements SimulationListener, ActionLis
 
 		simulationThread = thread;
 
-		setSize(1500,750);
+		setSize(1500,800);
 			
 		panel = new RoadSimViewPanel(1500,600);
 		panel.setSize(1500, 600);
@@ -46,16 +52,26 @@ public class RoadSimView extends JFrame implements SimulationListener, ActionLis
 
 
 		JPanel buttons = new JPanel();
-		LayoutManager layout2 = new GridLayout(2,1);
+		LayoutManager layout2 = new GridLayout(3,1);
 		buttons.setLayout(layout2);
 		JLabel simName = new JLabel(name);
 		simName.setHorizontalAlignment(SwingConstants.CENTER);
 		Font font = simName.getFont();
 		simName.setFont(new Font(font.getName(), Font.BOLD, 15)); // Cambia la dimensione del font a 20
 
+		stepNumLabel.setFont(new Font(font.getName(), Font.BOLD, 15));
+		stepNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
 		start.addActionListener(this);
 		stop.addActionListener(this);
 		pause.addActionListener(this);
+
+		slider.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				stepNumLabel.setText("Number of step to execute: %,d".formatted(slider.getValue()));
+			}
+		});
 
 		pause.setEnabled(false);
 		stop.setEnabled(false);
@@ -66,6 +82,8 @@ public class RoadSimView extends JFrame implements SimulationListener, ActionLis
 		stop.setPreferredSize(buttonSize);
 		pause.setPreferredSize(buttonSize);
 
+		slider.setPreferredSize(new Dimension(1000, 50));
+
 		buttons.add(simName);
 
 		JPanel buttonPanel = new JPanel(new GridLayout(1,3));
@@ -74,6 +92,12 @@ public class RoadSimView extends JFrame implements SimulationListener, ActionLis
 		buttonPanel.add(pause, BorderLayout.NORTH);
 
 		buttons.add(buttonPanel);
+		
+		JPanel sliderPanel = new JPanel(new GridLayout(1, 2));
+		sliderPanel.add(stepNumLabel);
+		sliderPanel.add(slider);
+
+		buttons.add(sliderPanel);
 
 		cp.add(buttons, BorderLayout.NORTH);
 		cp.add(BorderLayout.CENTER,panel);
@@ -108,7 +132,7 @@ public class RoadSimView extends JFrame implements SimulationListener, ActionLis
 			this.start.setEnabled(false);
 			this.stop.setEnabled(true);
 			this.pause.setEnabled(true);
-			simulationThread.setStep(1000);
+			simulationThread.setStep(slider.getValue());
 			simulationThread.start();
 		} else if (e.getSource() == this.stop) {
 			this.simulationThread.stopSimulation();
