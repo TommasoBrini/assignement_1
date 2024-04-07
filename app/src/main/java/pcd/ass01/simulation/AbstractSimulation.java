@@ -90,7 +90,7 @@ public abstract class AbstractSimulation {
 			@Override
 			public void run() {
 				step++;
-				test(step);
+				doStep(step);
 			}
 		};
 
@@ -147,7 +147,7 @@ public abstract class AbstractSimulation {
 		}
 	}
 
-	protected void test(int step){
+	protected void doStep(int step){
 		currentWallTime = System.currentTimeMillis();
 		t += dt;
 		/* process actions submitted to the environment */
