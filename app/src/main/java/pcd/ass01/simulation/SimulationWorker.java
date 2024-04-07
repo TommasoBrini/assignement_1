@@ -14,7 +14,7 @@ public class SimulationWorker extends Thread {
     private int dt;
     private int step;
     private CyclicBarrier barrier;
-    private AtomicBoolean state = new AtomicBoolean(true);
+    private boolean state = true;
 
     public SimulationWorker(String name, List<AbstractAgent> agents, int dt, int step, CyclicBarrier stepBarrier) {
         this.name = name;
@@ -26,7 +26,7 @@ public class SimulationWorker extends Thread {
 
     public void run() {
         for (int i = 0; i < step; i++) {
-            if(!state.get()) {
+            if(!state) {
                 synchronized (this){
                     try {
                         this.wait();
@@ -50,10 +50,10 @@ public class SimulationWorker extends Thread {
     }
 
     public void pauseSimulation() {
-        state.set(false);
+        state = false;
     }
 
-    public synchronized void resumeSimulation() {
-        state.set(true);
+    public void resumeSimulation() {
+        state = true;
     }
 }
