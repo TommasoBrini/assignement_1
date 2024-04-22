@@ -5,6 +5,10 @@ import pcd.ass01.environment.AbstractEnvironment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 import pcd.ass01.monitor.CyclicBarrier;
 
 /**
@@ -41,7 +45,9 @@ public abstract class AbstractSimulation {
 	long timePerStep;
 	int nSteps;
 	private List<SimulationWorker> workers = new ArrayList<>();
-
+	private ExecutorService executorService;
+	private boolean isPaused = false;
+	private boolean isStopped = false;
 
 	protected AbstractSimulation() {
 		agents = new ArrayList<AbstractAgent>();
@@ -85,11 +91,14 @@ public abstract class AbstractSimulation {
 
 		int jobSize = (int) Math.ceil((double) agents.size() / nWorkers);
 
+		executorService = Executors.newFixedThreadPool(nWorkers);
+
 		Runnable envRunnable = new Runnable() {
 			int step = 0;
 			@Override
 			public void run() {
 				step++;
+				System.out.println("doStep()");
 				doStep(step);
 			}
 		};
@@ -107,31 +116,25 @@ public abstract class AbstractSimulation {
 			}
 			var simulation = new SimulationWorker("worker-" + (i + 1), agents.subList(startIndex, endIndex), dt, numSteps, barrier);
 			workers.add(simulation);
-			simulation.start();
+			executorService.submit(simulation);
 		}
 
-		for (var simulation : workers) {
-			try {
-				simulation.join();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
 		endWallTime = System.currentTimeMillis();
 		this.averageTimePerStep = timePerStep / numSteps;
-		
 	}
 
 	public void pause() {
+		isPaused = true;
 		for (var simulation : workers) {
 			simulation.pauseSimulation();
 		}
 	}
 
 	public void resume() {
+		isPaused = false;
 		for (var simulation : workers) {
 			simulation.resumeSimulation();
-			synchronized (simulation){
+			synchronized (simulation) {
 				simulation.notify();
 				simulation.notify();
 			}
@@ -139,15 +142,31 @@ public abstract class AbstractSimulation {
 
 	}
 
+	public boolean isStopped() {
+		return isStopped;
+	}
+
 	public void stop() {
+		isStopped = true;
 		for (var simulation : workers) {
 			synchronized (simulation){
 				simulation.interrupt();
 			}
 		}
+		executorService.shutdownNow();
 	}
 
 	protected void doStep(int step){
+		if (isStopped) {
+			return;
+		}
+		while (isPaused) {
+			try {
+				Thread.sleep(100); // Puoi impostare un tempo di attesa arbitrario
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 		currentWallTime = System.currentTimeMillis();
 		t += dt;
 		/* process actions submitted to the environment */
@@ -165,6 +184,9 @@ public abstract class AbstractSimulation {
 		if(step != nSteps){
 			env.step(dt);
 			env.cleanActions();
+		}
+		if(nSteps == step){
+			isStopped = true;
 		}
 
 	}
@@ -211,6 +233,7 @@ public abstract class AbstractSimulation {
 
 	private void notifyNewStep(int t, List<AbstractAgent> agents, AbstractEnvironment env) {
 		for (var l: listeners) {
+			System.out.println("notify step done");
 			l.notifyStepDone(t, agents, env);
 		}
 	}

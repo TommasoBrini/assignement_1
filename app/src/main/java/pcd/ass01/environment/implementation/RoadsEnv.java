@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import pcd.ass01.agent.Action;
 import pcd.ass01.agent.implementation.CarAgent;
 import pcd.ass01.environment.AbstractEnvironment;
 import pcd.ass01.environment.Percept;
@@ -102,7 +103,8 @@ public class RoadsEnv extends AbstractEnvironment {
 	
 	@Override
 	public void processActions() {
-		for (var act: submittedActions) {
+		for(int i= 1; i < submittedActions.size() + 1; i++) {
+			Action act = submittedActions.get("car-" + i);
 			if(act instanceof MoveForward){
 				MoveForward mv = (MoveForward) act;
 				CarAgentInfo info = registeredCars.get(mv.agentId());

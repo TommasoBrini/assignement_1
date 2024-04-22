@@ -1,0 +1,10 @@
+average speed: 0.0
+average speed: 2.0E-4
+average speed: 4.0E-4
+average speed: 6.0E-4
+average speed: 8.0E-4
+average speed: 0.001
+average speed: 0.0012
+average speed: 0.0014
+average speed: 0.0014
+average speed: 0.0014

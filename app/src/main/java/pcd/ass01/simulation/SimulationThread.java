@@ -15,6 +15,7 @@ public class SimulationThread extends Thread {
 
         @Override
         public void run() {
+            System.out.println("Simulation started");
             simulation.run(step);
         }
 

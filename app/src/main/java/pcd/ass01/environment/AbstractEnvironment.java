@@ -4,6 +4,7 @@ import pcd.ass01.agent.Action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  *   
@@ -13,11 +14,11 @@ import java.util.List;
 public abstract class AbstractEnvironment {
 
 	private String id;
-	protected List<Action> submittedActions;
+	protected ConcurrentHashMap<String, Action> submittedActions;
 
 	protected AbstractEnvironment(String id) {
 		this.id = id;		
-		this.submittedActions = new ArrayList<>();
+		this.submittedActions = new ConcurrentHashMap<>();
 	}
 	
 	public String getId() {
@@ -48,13 +49,13 @@ public abstract class AbstractEnvironment {
 	public abstract Percept getCurrentPercepts(String agentId);
 
 	/**
-	 * 
-	 * Called by agent to submit an action to the environment
-	 * 
-	 * @param act - the action
-	 */
-	public void submitAction(Action act) {
-		submittedActions.add(act);
+     * Called by agent to submit an action to the environment
+     *
+     * @param agentId
+     * @param act     - the action
+     */
+	public void submitAction(String agentId, Action act) {
+		submittedActions.put(agentId, act);
 	}
 	
 	/**
